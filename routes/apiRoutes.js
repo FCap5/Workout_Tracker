@@ -4,7 +4,7 @@ const Workout = require('../models/workout');
 // router.post()
 
 // get /api/workouts - get last workout -  returns: most recent workout
-router.get('/api/workouts', (req, res) => {
+router.get('/workouts', (req, res) => {
   Workout.find({})
     .then((workoutInstance) => {
       res.json(workoutInstance);
@@ -17,7 +17,7 @@ router.get('/api/workouts', (req, res) => {
 });
 
 // put /api/workouts/:id - (add exercise) put new workout - returns: ?
-router.put('/api/workouts/:id', (req, res) => {
+router.put('/workouts/:id', (req, res) => {
   Workout.findByIdAndUpdate(params.id, { $push: { exercises: body } })
     .then((workoutInstance) => {
       res.json(workoutInstance);
@@ -29,7 +29,7 @@ router.put('/api/workouts/:id', (req, res) => {
 });
 // post api/workouts - (create workout) create a new workout - takes all information from workout and saves to DB
 //              -- return: success message
-router.post('/api/workouts', (req, res) => {
+router.post('/workouts', (req, res) => {
   Workout.create({})
     .then((workoutInstance) => {
       console.log(workoutInstance);
@@ -41,7 +41,7 @@ router.post('/api/workouts', (req, res) => {
     });
 });
 // get /api/workouts/range - (getworkouts in range)
-router.get('/api/workouts/range', (req, res) => {
+router.get('/workouts/range', (req, res) => {
   Workout.find({})
     .limit(7)
     .then((workoutInstance) => {
